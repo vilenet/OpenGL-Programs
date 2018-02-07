@@ -1,0 +1,40 @@
+# Project: my_GUI_library_based_OpenGL
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 16.09.16 10:48
+
+WXLIBNAME = wxmsw29u
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = "windres.exe"
+OBJ       = MingW/main.o
+LINKOBJ   = "MingW/main.o"
+LIBS      = -L"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/lib/wx/gcc_lib" -L"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/lib" -L"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/MinGW32/lib" -lfreeglut_static -lglu32 -lopengl32 -lwinmm -lgdi32 -mwindows 
+INCS      = -I"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/MinGW32/include"
+CXXINCS   = -I"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/MinGW32/include" -I"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/" -I"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/include/common" -I"D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/include"
+RCINCS    = --include-dir "D:/PROGRAMM FILES/wxDevCppP7-64b/App/devcpp/include/common"
+BIN       = MingW/my_GUI_library_based_OpenGL.exe
+DEFINES   = 
+CXXFLAGS  = $(CXXINCS) $(DEFINES) -DFREEGLUT_STATIC 
+CFLAGS    = $(INCS) $(DEFINES) -DFREEGLUT_STATIC 
+GPROF     = gprof.exe
+ifeq ($(OS),Windows_NT)
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   RM = rm -f
+   FixPath = $1
+endif
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(call FixPath,$(LINKOBJ)) "$(call FixPath,$(BIN))"
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
+
+MingW/main.o: $(GLOBALDEPS) main.cpp gui.h Textblock.h
+	$(CPP) -c main.cpp -o MingW/main.o $(CXXFLAGS)
