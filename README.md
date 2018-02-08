@@ -1,2 +1,2 @@
 # OpenGL-Programs
-OpenGL based programs
+OpenGL programs
